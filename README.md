@@ -10,7 +10,7 @@
 * <b>Linux</b> — Soon..
 
 ## Contributing
-```php
+```bash
 $ git clone https://github.com/tarutin/world-clock.git
 $ cd world-clock
 $ npm install
