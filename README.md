@@ -7,8 +7,8 @@ Simple international multi clock on your system tray.
 
 ## Download
 * <b>MacOS</b> — [World.dmg](https://tarutin.github.io/world-clock/builds/World.dmg) (50MB)
-* <b>Windows</b> — <span style="color:#ccc; font-style:italic;">Soon..</span>
-* <b>Linux</b> — <span style="color:#ccc; font-style:italic;">Soon..</span>
+* <b>Windows</b> — Soon..
+* <b>Linux</b> — Soon..
 
 ## Contributing
 ```bash
