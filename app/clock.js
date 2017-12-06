@@ -3,7 +3,7 @@ module.exports = { init }
 const path = require('path')
 const electron = require('electron')
 const app = electron.app
-const settings = require('electron-settings');
+const settings = require('electron-settings')
 const config = require('./config')
 const tray = require('./tray')
 const ipc = electron.ipcMain
@@ -66,8 +66,8 @@ function getClocks() {
 }
 
 function runClock() {
-    var now = new Date();
-    var timeToNextTick = (60 - now.getSeconds()) * 1000 - now.getMilliseconds();
+    var now = new Date()
+    var timeToNextTick = (60 - now.getSeconds()) * 1000 - now.getMilliseconds()
     setTimeout(function() {
         update()
         runClock()
@@ -108,7 +108,7 @@ function getCity(name, callback) {
                 })
             }
         }
-    });
+    })
 }
 
 function reset() {
@@ -120,10 +120,10 @@ function reset() {
 }
 
 function formatTime(ts) {
-    var date = new Date(ts);
-    var hours = date.getUTCHours();
-    var minutes = "0" + date.getUTCMinutes();
-    var seconds = "0" + date.getUTCSeconds();
+    var date = new Date(ts)
+    var hours = date.getUTCHours()
+    var minutes = "0" + date.getUTCMinutes()
+    var seconds = "0" + date.getUTCSeconds()
 
     return hours + ':' + minutes.substr(-2)// + ':' + seconds.substr(-2)
 }

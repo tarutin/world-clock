@@ -26,23 +26,23 @@ $(function()
                 <time data-offset='${clock.offset}'></time>
                 <span class='delete'><i class='fa fa-fw fa-times-circle fa-fw'></i></span>
             </button>
-        `);
+        `)
         updateTime()
         ipc.send('app-height', $('.app').height())
-    });
+    })
     
     $('.app').on('click', '.ipc-exit', function() {
         ipc.send('exit')
-    });
+    })
     
     $('.app').on('click', '.ipc-update', function() {
         ipc.send('check-update')
-    });
+    })
     
     $('.app').on('click', '.ipc-startup', function() {
         $('.ipc-startup').toggleClass('active')
         ipc.send('startup')
-    });
+    })
     
     $('.app').on('keyup', '.search input', function(e) {
         var keycode = (e.keyCode ? e.keyCode : e.which)
@@ -66,23 +66,23 @@ $(function()
                 })
             }
         }
-    });
+    })
     
     $('.app').on('click', '.clock button', function() {
         $(this).toggleClass('active')
         ipc.send('clock-toggle', $(this).data('index'))
-    });
+    })
     
     $('.app').on('click', '.clock button .delete', function(e) {
         let button = $(this).closest('button')
         ipc.send('clock-remove', button.data('index'))
         button.remove()
         return false
-    });
+    })
     
     ipc.send('app-height', $('.app').height())
     ipc.send('ready')
-});
+})
 
 
 function updateTime() {
@@ -91,7 +91,7 @@ function updateTime() {
         let time = $(this).find('time')
         let utc_offset = utc + (time.data('offset') * 3600000)
         time.text(formatTime(utc_offset))
-    });
+    })
 }
 
 function runClock() {

@@ -5,7 +5,7 @@ const config = require('./config')
 const Notification = electron.Notification
 
 function init() {
-    console.log('notice init');
+    console.log('notice init')
 
     // if(Notification.isSupported())
 }

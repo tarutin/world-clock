@@ -6,7 +6,7 @@ const app = electron.app
 const Menu = electron.Menu
 
 function init() {
-    console.log('menu init');
+    console.log('menu init')
     
     let template = 
     [
@@ -39,7 +39,7 @@ function init() {
                 { role: 'close' },
             ],
         },
-    ];
+    ]
     
-    Menu.setApplicationMenu(Menu.buildFromTemplate(template));
+    Menu.setApplicationMenu(Menu.buildFromTemplate(template))
 }

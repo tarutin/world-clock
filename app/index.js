@@ -13,7 +13,6 @@ const clock = require('./clock')
 const notice = require('./notice')
 const updater = require('./updater')
 const db = require('./db')
-const isOnline = require('is-online');
 
 app.dock.hide()
 
@@ -33,10 +32,6 @@ app.once('ready', () => {
     
     ipc.on('exit', app.quit)
     ipc.on('ready', () => { console.timeEnd('init') })
-    
-    isOnline().then(online => {
-        console.log('online', online)
-    })
 })
 
 app.on('window-all-closed', () => {

@@ -7,14 +7,14 @@ const window = require('./window')
 const ipc = electron.ipcMain
 const app = electron.app
 const shell = electron.shell
-const BrowserWindow = electron.BrowserWindow;
+const BrowserWindow = electron.BrowserWindow
 const request = require('request')
 const download = require('electron-dl').download
 
 var autoCheckTimer
 
 function init() {
-    console.log('updater init');
+    console.log('updater init')
     check({ silent:true, win:window.getWin() })
     ipcOnCheck()
 }
