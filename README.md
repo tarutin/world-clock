@@ -1,5 +1,4 @@
-# World — multi clock
-Simple international multi clock in your system tray.
+### Simple international multi clock in your system tray.
 
 <p align="center">
     <img src="https://raw.githubusercontent.com/tarutin/world-clock/master/resources/preview.png" width="718" alt="World multi clock" align="center">
