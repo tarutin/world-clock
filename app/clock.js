@@ -93,7 +93,7 @@ function getCity(name, callback) {
 
     request(url, function(err, res, dat) {
         if(err) console.log('clock get city data:', err.code)
-    
+
         if(dat) {
             let data = JSON.parse(dat)
             let utc = Math.floor(new Date().getTime())
