@@ -1,1 +1,5 @@
 node_modules
+builds
+resources
+package-lock.json
+app/bin
