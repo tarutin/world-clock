@@ -1,5 +1,5 @@
 node_modules
-builds/World-darwin-x64
+builds/World-*
 package-lock.json
 app/bin
 
