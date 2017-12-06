@@ -61,7 +61,7 @@ $(function()
                 $('.search label').text('')
             }
             else {
-                db.find(`SELECT name, UPPER(country) code FROM cities_big WHERE city LIKE '${q}%' ORDER BY popularity DESC LIMIT 1`, (city) => {
+                db.find(`SELECT name, UPPER(country) code FROM cities WHERE city LIKE '${q}%' ORDER BY popularity DESC LIMIT 1`, (city) => {
                     $('.search label').text(!city ? 'Not found' : city.name + ', ' + city.code)
                 })
             }
