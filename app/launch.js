@@ -11,28 +11,28 @@ const ipc = electron.ipcMain
 var launch
 
 function init() {
-	console.log('launch init')
+    console.log('launch init')
 
-	let appPath = process.platform === 'darwin' ? app.getPath('exe').replace(/\.app\/Content.*/, '.app') : undefined
-	launch = new AutoLaunch({ name:config.APP_NAME, path:appPath, isHidden:true })
-	
-	let isAutoOpen = app.getLoginItemSettings().openAtLogin ? 1 : 0
-	twig.view.settings = {'appAutoLaunch': isAutoOpen}
-	
-	onToggle()
+    let appPath = process.platform === 'darwin' ? app.getPath('exe').replace(/\.app\/Content.*/, '.app') : undefined
+    launch = new AutoLaunch({ name:config.APP_NAME, path:appPath, isHidden:true })
+    
+    let isAutoOpen = app.getLoginItemSettings().openAtLogin ? 1 : 0
+    twig.view.settings = {'appAutoLaunch': isAutoOpen}
+    
+    onToggle()
 }
 
 function onToggle() {
-	ipc.on('startup', () => {
-		launch.isEnabled().then(enabled => {
-			if(!enabled) {
-				twig.view.settings.appAutoLaunch = true
-				launch.enable()
-			}
-			else {
-				twig.view.settings.appAutoLaunch = false
-				launch.disable()
-			}
-		})
-	})
+    ipc.on('startup', () => {
+        launch.isEnabled().then(enabled => {
+            if(!enabled) {
+                twig.view.settings.appAutoLaunch = true
+                launch.enable()
+            }
+            else {
+                twig.view.settings.appAutoLaunch = false
+                launch.disable()
+            }
+        })
+    })
 }

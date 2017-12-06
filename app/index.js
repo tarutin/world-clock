@@ -18,35 +18,35 @@ const isOnline = require('is-online');
 app.dock.hide()
 
 app.once('ready', () => {
-	console.log('index init')
-	
-	window.init()
-	menu.init()
-	tray.init()
-	launch.init()
-	clock.init()
-	updater.init()
-	notice.init()
-	db.init()
+    console.log('index init')
+    
+    window.init()
+    menu.init()
+    tray.init()
+    launch.init()
+    clock.init()
+    updater.init()
+    notice.init()
+    db.init()
 
-	// setTimeout(function() {}, config.DELAYED_INIT)
-	
-	ipc.on('exit', app.quit)
-	ipc.on('ready', () => { console.timeEnd('init') })
-	
-	isOnline().then(online => {
-		console.log('online', online)
-	})
+    // setTimeout(function() {}, config.DELAYED_INIT)
+    
+    ipc.on('exit', app.quit)
+    ipc.on('ready', () => { console.timeEnd('init') })
+    
+    isOnline().then(online => {
+        console.log('online', online)
+    })
 })
 
 app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit()
-  }
+    if (process.platform !== 'darwin') {
+        app.quit()
+    }
 })
 
 app.on('activate', window.show)
 
 app.on('before-quit', () => {
-  app.quitting = true
+    app.quitting = true
 })

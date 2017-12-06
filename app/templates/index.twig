@@ -1,34 +1,34 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset='utf-8'/>
-		<title>{{ config.APP_NAME }}</title>
-		<link rel='stylesheet' href='../static/style.css'/>
-	</head>
-	<body class='app {% if system.isDark == false %}light{% endif %}'>
-		<section class='search'>
-			<input type='input' name='q' placeholder='Search'/>
-			<label/>
-		</section>
-		<section class='clock'>
-			{% for clock in clocks %}
-				<button {% if clock.tray %}class='active'{% endif %} data-index='{{ loop.index0 }}'>
-					{{ clock.full }}
-					<time data-offset='{{ clock.offset }}'></time>
-					<span class='delete'><i class='fa fa-fw fa-times-circle fa-fw'></i></span>
-				</button>
-			{% endfor %}
-		</section>
-		<section class='settings'>
-			<button class='ipc-startup {% if settings.appAutoLaunch %}active{% endif %}'>Open at Login</button>
-			<button class='ipc-update'>Check for Update</button>
-		</section>
-		<section class='exit'>
-			<button class='ipc-exit'>Quit {{ config.APP_NAME }}</button>
-		</section>
-		
-		<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js' onload='window.$ = window.jQuery = module.exports;'></script>
-		<script>require('../static/renderer')</script>
-		<style> ::selection { background:blue; } </style>
-	</body>
+    <head>
+        <meta charset='utf-8'/>
+        <title>{{ config.APP_NAME }}</title>
+        <link rel='stylesheet' href='../static/style.css'/>
+    </head>
+    <body class='app {% if system.isDark == false %}light{% endif %}'>
+        <section class='search'>
+            <input type='input' name='q' placeholder='Search'/>
+            <label/>
+        </section>
+        <section class='clock'>
+            {% for clock in clocks %}
+                <button {% if clock.tray %}class='active'{% endif %} data-index='{{ loop.index0 }}'>
+                    {{ clock.full }}
+                    <time data-offset='{{ clock.offset }}'></time>
+                    <span class='delete'><i class='fa fa-fw fa-times-circle fa-fw'></i></span>
+                </button>
+            {% endfor %}
+        </section>
+        <section class='settings'>
+            <button class='ipc-startup {% if settings.appAutoLaunch %}active{% endif %}'>Open at Login</button>
+            <button class='ipc-update'>Check for Update</button>
+        </section>
+        <section class='exit'>
+            <button class='ipc-exit'>Quit {{ config.APP_NAME }}</button>
+        </section>
+        
+        <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js' onload='window.$ = window.jQuery = module.exports;'></script>
+        <script>require('../static/renderer')</script>
+        <style> ::selection { background:blue; } </style>
+    </body>
 </html>
