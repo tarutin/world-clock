@@ -10,7 +10,7 @@ const config = {
     DELAYED_INIT: 3000,
     UPDATER_CHECK_TIME: 1000 * 60 * 10,
     UPDATER_CHECK_VERSION: 'https://tarutin.github.io/world-clock/update.json',
-    DB_CONNECT: 'mysql://world:rocks@101101.ru/world?charset=UTF8_GENERAL_CI',
+    DB_CONNECT: 'mysql://world:rocks@101101.ru/world?charset=UTF8_GENERAL_CI' /* JFYI: only SELECT access granted */,
 }
 
 module.exports = config
