@@ -1,7 +1,6 @@
 node_modules
 builds/World-*
 package-lock.json
-app/bin
 
 .DS_*
 .Trashes
