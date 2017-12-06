@@ -13,7 +13,15 @@
   },
   "author": "Alexey Tarutin",
   "private": true,
-  "license": "CC0-1.0",
+  "homepage": "https://github.com/tarutin/world-clock",
+  "keywords": [
+      "desktop",
+      "electron",
+      "electron-app",
+      "clock",
+      "multi clock"
+  ],
+  "license": "MIT",
   "devDependencies": {
     "electron": "^1.7.9",
     "electron-packager": "^10.1.0",
