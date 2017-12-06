@@ -11,12 +11,12 @@ Simple international multi clock in your system tray.
 * <b>Linux</b> — Soon..
 
 ## Contributing
-```bash
+```php
 $ git clone https://github.com/tarutin/world-clock.git
 $ cd world-clock
 $ npm install
 $ npm start
-# ..do some magic and package app:
+# .. do some magic and package app:
 $ npm run build
 ```
 
