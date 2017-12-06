@@ -1,5 +1,15 @@
+
 node_modules
-builds
+builds/World-darwin-x64
 resources
 package-lock.json
 app/bin
+
+.gitignore
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
