@@ -34,7 +34,7 @@ function auto(options) {
 function check(options) {
     request(config.UPDATER_CHECK_VERSION, function(err, res, data) {
         if(err) console.log('check update:', err.code)
-        
+
         if(!res) {
             if(!options.silent) {
                 notice.send(`Error check new version! Try again later`)
@@ -47,14 +47,14 @@ function check(options) {
             if(data.version > config.APP_VERSION) {
                 notice.send(`A new version ${data.version} is available!\nClick to download!`, () => {
                     app.dock.show()
-                    
+
                     download(options.win, data.file).then(dl => {
                         notice.send('Successfuly downloaded!')
                         shell.openItem(dl.getSavePath())
                         setTimeout(app.quit, 3000)
                     })
                 })
-                
+
                 clearInterval(autoCheckTimer)
             }
             else {
