@@ -14,6 +14,8 @@ const notice = require('./notice')
 const updater = require('./updater')
 const db = require('./db')
 
+process.on('uncaughtException', error)
+
 if(process.platform == 'darwin') {
     app.dock.hide()
 }
@@ -47,3 +49,16 @@ app.on('activate', window.show)
 app.on('before-quit', () => {
     app.quitting = true
 })
+
+function error(error) {
+    console.error(error)
+
+    switch(typeof error) {
+        case "object":
+            notice.send('Error: ' + error.message)
+            break
+        case "string":
+            notice.send('Error: ' + error)
+            break
+    }
+}
