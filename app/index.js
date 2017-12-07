@@ -14,11 +14,13 @@ const notice = require('./notice')
 const updater = require('./updater')
 const db = require('./db')
 
-app.dock.hide()
+if(process.platform == 'darwin') {
+    app.dock.hide()
+}
 
 app.once('ready', () => {
     console.log('index init')
-    
+
     window.init()
     menu.init()
     tray.init()
@@ -29,13 +31,13 @@ app.once('ready', () => {
     db.init()
 
     // setTimeout(function() {}, config.DELAYED_INIT)
-    
+
     ipc.on('exit', app.quit)
     ipc.on('ready', () => { console.timeEnd('init') })
 })
 
 app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin') {
+    if(process.platform !== 'darwin') {
         app.quit()
     }
 })
