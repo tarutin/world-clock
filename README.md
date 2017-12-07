@@ -1,7 +1,7 @@
 <p align="center">
     <img src="https://raw.githubusercontent.com/tarutin/world-clock/master/app/static/icon.png" width="70" height="70" alt="World multi clock" align="center">
     <br/>
-    <h1 align="center">simple international multi clock in your system tray</h1>
+    <h3 align="center">simple multi clock in your system tray</h3>
 </p>
 
 <p align="center">
