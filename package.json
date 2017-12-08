@@ -16,6 +16,13 @@
     "author": "Alexey Tarutin",
     "private": true,
     "homepage": "https://github.com/tarutin/world-clock",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/tarutin/world-clock.git"
+    },
+    "bugs": {
+        "url": "https://github.com/tarutin/world-clock/issues"
+    },
     "keywords": [
         "desktop",
         "electron",
