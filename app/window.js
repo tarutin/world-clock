@@ -49,7 +49,7 @@ function init() {
         win.setSize(config.WIN_WIDTH, height)
     })
 
-      win.on('blur', hide)
+    win.on('blur', hide)
 
     win.on('show', () => {
         tray.setHighlightMode('always')
