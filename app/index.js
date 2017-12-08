@@ -53,12 +53,6 @@ app.on('before-quit', () => {
 function error(error) {
     console.error(error)
 
-    switch(typeof error) {
-        case "object":
-            notice.send('Error: ' + error.message)
-            break
-        case "string":
-            notice.send('Error: ' + error)
-            break
-    }
+    if(typeof error == 'object') notice.send('Error: ' + error.message)
+    else notice.send('Error: ' + error)
 }

@@ -30,9 +30,9 @@ function init() {
         icon: config.DOCK_ICON,
         skipTaskbar: true,
     })
-  
+
     positioner = new Positioner(win)
-    
+
     twig.view = {
         'config': config,
         'system': {
@@ -44,22 +44,21 @@ function init() {
     win.setVisibleOnAllWorkspaces(true)
 
     // win.once('ready-to-show', show)
-    
+
     ipc.on('app-height', (event, height) => {
         win.setSize(config.WIN_WIDTH, height)
-        console.log('window auto height', height+'px')
     })
-  
+
       win.on('blur', hide)
-    
+
     win.on('show', () => {
         tray.setHighlightMode('always')
     })
-    
+
     win.on('hide', () => {
         tray.setHighlightMode('never')
     })
-      
+
     win.on('close', (event) => {
         if (app.quitting) {
             win = null
