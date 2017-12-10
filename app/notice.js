@@ -17,7 +17,7 @@ function send(text, callback) {
         silent: true,
         // icon: `${__dirname}/static/icon.png`,
     })
-    
+
     notice.show()
-    if(callback) notice.on('click', callback)
+    if (callback) notice.on('click', callback)
 }

@@ -16,7 +16,7 @@ const db = require('./db')
 
 process.on('uncaughtException', error)
 
-if(process.platform == 'darwin') {
+if (process.platform == 'darwin') {
     app.dock.hide()
 }
 
@@ -35,11 +35,13 @@ app.once('ready', () => {
     // setTimeout(function() {}, config.DELAYED_INIT)
 
     ipc.on('exit', app.quit)
-    ipc.on('ready', () => { console.timeEnd('init') })
+    ipc.on('ready', () => {
+        console.timeEnd('init')
+    })
 })
 
 app.on('window-all-closed', () => {
-    if(process.platform !== 'darwin') {
+    if (process.platform !== 'darwin') {
         app.quit()
     }
 })
@@ -53,6 +55,6 @@ app.on('before-quit', () => {
 function error(error) {
     console.error(error)
 
-    if(typeof error == 'object') notice.send('Error: ' + error.message)
+    if (typeof error == 'object') notice.send('Error: ' + error.message)
     else notice.send('Error: ' + error)
 }
