@@ -12,7 +12,7 @@
         </section>
         <section class='clock'>
             {% for clock in clocks %}
-                <button {% if clock.tray %}class='active'{% endif %} data-index='{{ loop.index0 }}'>
+                <button {% if clock.tray %}class='active'{% endif %} data-name='{{ clock.name }}'>
                     {{ clock.full }}
                     <time data-offset='{{ clock.offset }}'></time>
                     <span class='delete'><i class='fa fa-fw fa-times-circle fa-fw'></i></span>
@@ -26,7 +26,7 @@
         <section class='exit'>
             <button class='ipc-exit'>Quit {{ config.APP_NAME }}</button>
         </section>
-        
+
         <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js' onload='window.$ = window.jQuery = module.exports;'></script>
         <script>require('../renderer')</script>
         <style> ::selection { background:blue; } </style>

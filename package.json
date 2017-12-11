@@ -1,7 +1,7 @@
 {
     "name": "world",
     "productName": "World",
-    "version": "0.3.3",
+    "version": "1.0.0",
     "description": "World — simple multi clock",
     "main": "app/index.js",
     "scripts": {
