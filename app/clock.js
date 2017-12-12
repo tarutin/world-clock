@@ -58,8 +58,18 @@ function onClockRemove() {
 function onClockAdd() {
     ipc.on('clock-add', (e, city) => {
         getCity(city, function(data) {
-            if (data) {
-                let clocks = settings.get('clocks')
+            if (!data) return
+
+            let clocks = settings.get('clocks')
+            let issetClock = false
+
+            clocks.forEach(clock => {
+                if (clock.name.replace(/[^a-z0-9]/gi, '') == data.name.replace(/[^a-z0-9]/gi, '')) {
+                    issetClock = true
+                }
+            })
+
+            if (!issetClock) {
                 clocks.push(data)
                 settings.set('clocks', clocks)
                 e.sender.send('clock-added', data)
