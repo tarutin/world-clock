@@ -55,9 +55,7 @@ $(function() {
 
     $('.app').on('keyup', '.search input', function(e) {
         var keycode = e.keyCode ? e.keyCode : e.which
-        var q = $('.search input')
-            .val()
-            .trim()
+        var q = $('.search input').val().trim()
         var label = $('.search label').text()
 
         if (keycode == 13) {

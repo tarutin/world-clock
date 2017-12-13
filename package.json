@@ -6,14 +6,10 @@
     "main": "app/index.js",
     "scripts": {
         "start": "electron .",
-        "package-mac":
-            "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=app/static/icon.icns --prune=true --out=builds --ignore=resources",
-        "package-win":
-            "electron-packager . --overwrite --platform=win32 --icon=app/static/icon.ico --prune=true --asar=true --out=builds --ignore=resources --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"World\"",
-        "package-linux":
-            "electron-packager . --overwrite --asar=true --platform=linux --arch=x64 --icon=app/static/icon.png --prune=true --out=builds --ignore=resources",
-        "package-mac-installer":
-            "electron-installer-dmg builds/World-darwin-x64/World.app World --out=builds --overwrite --icon=app/static/icon.icns --icon-size=128 --background=app/static/installer-bg.png",
+        "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=app/static/icon.icns --prune=true --out=builds --ignore=resources",
+        "package-win": "electron-packager . --overwrite --platform=win32 --icon=app/static/icon.ico --prune=true --asar=true --out=builds --ignore=resources --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"World\"",
+        "package-linux": "electron-packager . --overwrite --asar=true --platform=linux --arch=x64 --icon=app/static/icon.png --prune=true --out=builds --ignore=resources",
+        "package-mac-installer": "electron-installer-dmg builds/World-darwin-x64/World.app World --out=builds --overwrite --icon=app/static/icon.icns --icon-size=128 --background=app/static/installer-bg.png",
         "build": "npm run package-mac && npm run package-mac-installer",
         "spaces": "app/bin/do-spaces.sh"
     },
