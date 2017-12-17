@@ -1,3 +1,5 @@
+const webpack = require('webpack')
+
 module.exports = {
     watch: true,
     target: 'electron',
@@ -13,19 +15,24 @@ module.exports = {
         loaders: [
             {
                 test: /\.vue$/,
-                loader: 'vue-loader'
+                loader: 'vue-loader',
             },
             {
                 test: /\.(png|jpg|gif|svg)$/,
                 loader: 'file-loader',
                 query: {
-                    name: '[name].[ext]?[hash]'
-                }
-            }
-        ]
+                    name: '[name].[ext]?[hash]',
+                },
+            },
+        ],
     },
 
     resolve: {
         alias: { vue: 'vue/dist/vue.js' },
     },
+    plugins: [
+        new webpack.LoaderOptionsPlugin({
+            minimize: false,
+        }),
+    ]
 }

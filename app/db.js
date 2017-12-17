@@ -2,6 +2,7 @@ module.exports = { init, find }
 
 const config = require('./config')
 const mysql = require('mysql2')
+// const notice = require('./notice')
 
 var db
 var connect = false
@@ -25,7 +26,7 @@ function init() {
 }
 
 function find(q, callback) {
-    if(!connect) return
+    if(!connect) reconnect()
 
     db.query(q, function(error, results, fields) {
         if(error) {

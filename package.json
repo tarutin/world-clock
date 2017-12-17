@@ -18,7 +18,14 @@
     "bugs": {
         "url": "https://github.com/tarutin/world-clock/issues"
     },
-    "keywords": ["desktop", "electron", "electron-app", "clock", "multi clock", "vue"],
+    "keywords": [
+        "desktop",
+        "electron",
+        "electron-app",
+        "clock",
+        "multi clock",
+        "vue"
+    ],
     "license": "MIT",
     "dependencies": {
         "auto-launch": "^5.0.3",
@@ -26,13 +33,14 @@
         "electron-positioner": "^3.0.0",
         "electron-settings": "^3.1.4",
         "ipc": "0.0.1",
+        "jquery": "^3.2.1",
         "mysql2": "^1.5.1",
         "request": "^2.83.0",
         "vue": "^2.5.11"
     },
     "devDependencies": {
+        "babili-webpack-plugin": "^0.1.2",
         "css-loader": "^0.28.7",
-        "electron": "^1.7.9",
         "electron-prebuilt": "^1.4.13",
         "electron-reload": "^1.2.2",
         "file-loader": "^1.1.6",

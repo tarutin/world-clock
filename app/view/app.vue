@@ -1,9 +1,8 @@
 <template>
-    <section>
-        <h1>{{ msg }}</h1>
+    <div>
         <section class='search'>
-            <input v-on:keyup.enter='addCity' v-model='q' type='input' name='q' placeholder='Search'/>
-            <label/>
+            <input v-on:keyup.enter='addCity' v-on:keyup='searchCity' v-model.trim='q' type='input' name='q' placeholder='Search'/>
+            <label>{{ searchLabel }}</label>
         </section>
         <section class='clock'>
         </section>
@@ -14,18 +13,19 @@
         <section class='exit'>
             <button v-on:click='appQuit'>Quit</button>
         </section>
-    </section>
+    </div>
 </template>
 
 <script>
     import electron from 'electron'
-    // import notice from '../notice'
+    import notice from '../notice'
+    import db from '../db'
     const app = electron.remote.app
 
     export default {
         data() {
             return {
-                msg: 'Hello!'
+                searchLabel: '',
             }
         },
         methods: {
@@ -33,8 +33,16 @@
                 app.quit()
             },
             addCity: function(e) {
-                // notice.send(this.q)
+                notice.send(this.q)
             },
-        },
+            searchCity: function() {
+                if(this.q == '') this.searchLabel = ''
+                else {
+                    db.find(`SELECT name, UPPER(country) code FROM cities WHERE city LIKE '${this.q}%' ORDER BY popularity DESC LIMIT 1`, city => {
+                        this.searchLabel = !city ? 'Not found' : city.name + ', ' + city.code
+                    })
+                }
+            },
+        }
     }
 </script>

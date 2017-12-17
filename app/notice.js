@@ -2,11 +2,11 @@ module.exports = { init, send }
 
 const electron = require('electron')
 const config = require('./config')
-const Notification = electron.Notification
+const Notification = electron.Notification || electron.remote.Notification
 
 function init() {
     console.log('notice init')
-send('asd')
+
     // if(Notification.isSupported())
 }
 
