@@ -7,7 +7,7 @@ const Notification = electron.Notification
 function init() {
     console.log('notice init')
 
-    // if(Notification.isSupported())
+    // console.log(Notification.isSupported())
 }
 
 function send(text, callback) {
