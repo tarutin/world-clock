@@ -14,6 +14,10 @@ const notice = require('./notice')
 const updater = require('./updater')
 const db = require('./db')
 
+require('electron-reload')(__dirname, {
+    electron: require('electron-prebuilt'),
+})
+
 process.on('uncaughtException', error)
 
 if (process.platform == 'darwin') {
@@ -55,6 +59,6 @@ app.on('before-quit', () => {
 function error(error) {
     console.error(error)
 
-    if (typeof error == 'object') notice.send('Error: ' + error.message)
-    else notice.send('Error: ' + error)
+    // if (typeof error == 'object') notice.send('Error: ' + error.message)
+    // else notice.send('Error: ' + error)
 }

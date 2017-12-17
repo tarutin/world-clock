@@ -8,18 +8,13 @@ const config = require('./config')
 const tray = require('./tray')
 const ipc = electron.ipcMain
 const request = require('request')
-const twig = require('electron-twig')
 
 var clock = null
 
 function init() {
     console.log('clock init')
 
-    // settings.deleteAll()
-    // console.log(settings.get('clocks'))
-
     if (!settings.has('clocks')) reset()
-
     getClocks()
     onClockAdd()
     onClockRemove()
@@ -79,7 +74,7 @@ function onClockAdd() {
 }
 
 function getClocks() {
-    twig.view.clocks = settings.get('clocks')
+    // twig.view.clocks = settings.get('clocks')
 
     update()
     runClock()

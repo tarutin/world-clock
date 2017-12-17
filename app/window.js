@@ -5,10 +5,11 @@ const config = require('./config')
 const app = electron.app
 const BrowserWindow = electron.BrowserWindow
 const ipc = electron.ipcMain
-const twig = require('electron-twig')
+// const twig = require('electron-twig')
 const tray = require('./tray')
 const Positioner = require('electron-positioner')
 const system = electron.systemPreferences
+const isDevMode = process.execPath.match(/[\\/]electron/);
 
 var win = null
 var positioner
@@ -33,23 +34,16 @@ function init() {
 
     positioner = new Positioner(win)
 
-    twig.view = {
-        'config': config,
-        'system': {
-            'isDark': system.isDarkMode(),
-        }
-    }
-
-    win.loadURL(`file://${__dirname}/templates/index.twig`)
+    win.loadURL(`file://${__dirname}/view/index.html`)
     win.setVisibleOnAllWorkspaces(true)
 
-    // win.once('ready-to-show', show)
+    win.once('ready-to-show', show)
 
     ipc.on('app-height', (event, height) => {
         win.setSize(config.WIN_WIDTH, height)
     })
 
-    win.on('blur', hide)
+    // win.on('blur', hide)
 
     win.on('show', () => {
         tray.setHighlightMode('always')
@@ -59,7 +53,7 @@ function init() {
         tray.setHighlightMode('never')
     })
 
-    win.on('close', (event) => {
+    win.on('close', event => {
         if (app.quitting) {
             win = null
         } else {

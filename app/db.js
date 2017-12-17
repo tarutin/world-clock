@@ -8,7 +8,7 @@ var connect = false
 
 function init() {
     console.log('db init')
-    
+
     db = mysql.createConnection(config.DB_CONNECT)
 
     db.connect(function(err) {
@@ -18,15 +18,15 @@ function init() {
         }
         else connect = true
     })
-    
+
     db.on('error', function() { connect = false })
-    
+
     setInterval(reconnect, 2000)
 }
 
 function find(q, callback) {
     if(!connect) return
-    
+
     db.query(q, function(error, results, fields) {
         if(error) {
             console.log('db err', error.code)
@@ -49,7 +49,7 @@ function reconnect() {
         db.connect(function(err) {
             if(!err) {
                 connect = true
-                console.log('db', 'reconnect')
+                console.log('db', 'reconnected')
             }
         })
     }

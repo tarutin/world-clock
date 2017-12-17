@@ -2,7 +2,7 @@
 
 * { margin:0; padding:0; outline:none; color:#fff; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; box-sizing:border-box!important; -webkit-box-sizing:border-box!important; }
 *, *:before, *:after { box-sizing:inherit; -webkit-box-sizing:inherit; }
-html, body { background:#373737; color:#fff; font-size:15px; line-height:1.5; -webkit-text-size-adjust:100%; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
+html, body { background:#373737; color:#fff; font-size:15px; line-height:1.5; -webkit-text-size-adjust:100%; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
 button, html input[type="button"], input[type="reset"], input[type="submit"] { -webkit-appearance:button; cursor:pointer; }
 
 .titlebar { -webkit-app-region:drag; -webkit-user-select:none; text-align:center; font-size:80%; font-weight:600; padding:10px; opacity:.7; border-bottom:1px solid #222; }
