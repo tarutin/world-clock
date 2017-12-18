@@ -8,14 +8,14 @@ var db
 var connect = false
 
 function init() {
-    console.log('db init')
+    process.stdout.write('db init\n')
 
     db = mysql.createConnection(config.DB_CONNECT)
 
     db.connect(function(err) {
         if(err) {
             connect = false
-            console.log('db not connected:', err.code)
+            process.stdout.write('db not connected: ' + err.code + '\n')
         }
         else connect = true
     })
@@ -30,7 +30,7 @@ function find(q, callback) {
 
     db.query(q, function(error, results, fields) {
         if(error) {
-            console.log('db err', error.code)
+            process.stdout.write('db err ' + error.code + '\n')
             connect = false
             reconnect()
         }
@@ -45,12 +45,12 @@ function disconnect() {
 
 function reconnect() {
     if(!connect) {
-        console.log('db', 'lost connect')
+        process.stdout.write('db lost connect\n')
         db = mysql.createConnection(config.DB_CONNECT)
         db.connect(function(err) {
             if(!err) {
                 connect = true
-                console.log('db', 'reconnected')
+                process.stdout.write('db reconnected\n')
             }
         })
     }

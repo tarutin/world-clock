@@ -6,9 +6,9 @@ const app = electron.app
 const Menu = electron.Menu
 
 function init() {
-    console.log('menu init')
-    
-    let template = 
+    process.stdout.write('menu init\n')
+
+    let template =
     [
         {
             label: config.APP_NAME,
@@ -40,6 +40,6 @@ function init() {
             ],
         },
     ]
-    
+
     Menu.setApplicationMenu(Menu.buildFromTemplate(template))
 }

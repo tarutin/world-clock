@@ -2,7 +2,7 @@ module.exports = { init, getBounds, setHighlightMode, setTitle }
 
 const path = require('path')
 const electron = require('electron')
-const platform = require('os').platform() 
+const platform = require('os').platform()
 const config = require('./config')
 
 const app = electron.app
@@ -15,8 +15,8 @@ const window = require('./window')
 var tray = null
 
 function init() {
-    console.log('tray init')
-    
+    process.stdout.write('tray init\n')
+
     var icon = platform == 'win32' ? config.TRAY_ICON_WIN : (system.isDarkMode() ? config.TRAY_ICON_MAC_DARKMODE : config.TRAY_ICON_MAC)
     tray = new Tray(nativeImage.createFromPath(icon))
 

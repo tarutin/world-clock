@@ -15,7 +15,7 @@ var win = null
 var positioner
 
 function init() {
-    console.log('window init')
+    process.stdout.write('window init\n')
 
     win = new BrowserWindow({
         width: config.WIN_WIDTH,

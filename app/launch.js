@@ -1,38 +1,24 @@
-module.exports = { init }
+module.exports = { toggle }
 
 const path = require('path')
 const electron = require('electron')
-const app = electron.app
+const app = electron.app || electron.remote.app
 const config = require('./config')
-// const twig = require('electron-twig')
 const AutoLaunch = require('auto-launch')
-const ipc = electron.ipcMain
 
-var launch
+var launch = null
 
-function init() {
-    console.log('launch init')
+function toggle() {
+    if (!launch) {
+        let appPath = process.platform === 'darwin' ? app.getPath('exe').replace(/\.app\/Content.*/, '.app') : undefined
+        launch = new AutoLaunch({ name: config.APP_NAME, path: appPath, isHidden: true })
+    }
 
-    let appPath = process.platform === 'darwin' ? app.getPath('exe').replace(/\.app\/Content.*/, '.app') : undefined
-    launch = new AutoLaunch({ name:config.APP_NAME, path:appPath, isHidden:true })
-
-    let isAutoOpen = app.getLoginItemSettings().openAtLogin ? 1 : 0
-    // twig.view.settings = {'appAutoLaunch': isAutoOpen}
-
-    onToggle()
-}
-
-function onToggle() {
-    ipc.on('startup', () => {
-        launch.isEnabled().then(enabled => {
-            if(!enabled) {
-                // twig.view.settings.appAutoLaunch = true
-                launch.enable()
-            }
-            else {
-                // twig.view.settings.appAutoLaunch = false
-                launch.disable()
-            }
-        })
+    launch.isEnabled().then(enabled => {
+        if (!enabled) {
+            launch.enable()
+        } else {
+            launch.disable()
+        }
     })
 }

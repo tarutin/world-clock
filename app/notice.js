@@ -5,7 +5,7 @@ const config = require('./config')
 const Notification = electron.Notification || electron.remote.Notification
 
 function init() {
-    console.log('notice init')
+    process.stdout.write('notice init\n')
 
     // if(Notification.isSupported())
 }

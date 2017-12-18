@@ -8,7 +8,6 @@ const ipc = electron.ipcMain
 const tray = require('./tray')
 const menu = require('./menu')
 const window = require('./window')
-const launch = require('./launch')
 const clock = require('./clock')
 const notice = require('./notice')
 const updater = require('./updater')
@@ -25,12 +24,11 @@ if (process.platform == 'darwin') {
 }
 
 app.once('ready', () => {
-    console.log('index init')
+    process.stdout.write('index init\n')
 
     window.init()
     menu.init()
     tray.init()
-    launch.init()
     clock.init()
     updater.init()
     notice.init()
@@ -39,9 +37,8 @@ app.once('ready', () => {
     // setTimeout(function() {}, config.DELAYED_INIT)
 
     ipc.on('exit', app.quit)
-    ipc.on('ready', () => {
-        console.timeEnd('init')
-    })
+
+    console.timeEnd('init')
 })
 
 app.on('window-all-closed', () => {

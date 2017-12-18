@@ -12,7 +12,7 @@ const request = require('request')
 var clock = null
 
 function init() {
-    console.log('clock init')
+    process.stdout.write('clock init\n')
 
     if (!settings.has('clocks')) reset()
     getClocks()
@@ -107,7 +107,7 @@ function getCity(name, callback) {
     let url = 'https://timezoneapi.io/api/address/?' + encodeURIComponent(name).replace(/%20/g, '+')
 
     request(url, function(err, res, dat) {
-        if (err) console.log('clock get city data:', err.code)
+        if (err) process.stdout.write('clock get city data:' + err.code + '\n')
 
         if (dat) {
             let data = JSON.parse(dat)

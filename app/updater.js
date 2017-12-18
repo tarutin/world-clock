@@ -1,4 +1,4 @@
-module.exports = { init, auto }
+module.exports = { init, auto, check }
 
 const electron = require('electron')
 const config = require('./config')
@@ -14,7 +14,7 @@ const download = require('electron-dl').download
 var autoCheckTimer
 
 function init() {
-    console.log('updater init')
+    process.stdout.write('updater init\n')
     check({ silent:true, win:window.getWin() })
     ipcOnCheck()
 }
@@ -33,7 +33,7 @@ function auto(options) {
 
 function check(options) {
     request(config.UPDATER_CHECK_VERSION, function(err, res, data) {
-        if(err) console.log('check update:', err.code)
+        if(err) process.stdout.write('check update: ' + err.code + '\n')
 
         if(!res) {
             if(!options.silent) {
