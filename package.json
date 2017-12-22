@@ -18,14 +18,7 @@
     "bugs": {
         "url": "https://github.com/tarutin/world-clock/issues"
     },
-    "keywords": [
-        "desktop",
-        "electron",
-        "electron-app",
-        "clock",
-        "multi clock",
-        "vue"
-    ],
+    "keywords": ["desktop", "electron", "electron-app", "clock", "multi clock", "vue"],
     "license": "MIT",
     "dependencies": {
         "auto-launch": "^5.0.3",

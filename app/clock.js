@@ -1,4 +1,4 @@
-module.exports = { init }
+module.exports = { init, update }
 
 const path = require('path')
 const electron = require('electron')
@@ -16,9 +16,10 @@ function init() {
 
     if (!settings.has('clocks')) reset()
     getClocks()
-    onClockAdd()
-    onClockRemove()
-    onClockTrayToggle()
+    // onClockAdd()
+    // onClockRemove()
+    // onClockTrayToggle()
+    ipc.on('clock-update', update)
 }
 
 function onClockTrayToggle() {

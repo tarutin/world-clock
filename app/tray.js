@@ -7,7 +7,7 @@ const config = require('./config')
 
 const app = electron.app
 const Menu = electron.Menu
-const Tray = electron.Tray
+const Tray = electron.Tray || electron.remote.Tray
 const nativeImage = electron.nativeImage
 const system = electron.systemPreferences
 const window = require('./window')

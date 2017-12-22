@@ -8,11 +8,11 @@ const system = electron.remote.systemPreferences
 const ipc = electron.ipcRenderer
 
 $('title').text(config.APP_NAME)
-if(!system.isDarkMode()) $('.app').addClass('light')
+if (!system.isDarkMode()) $('.app').addClass('light')
 
 new Vue({
     el: 'app',
-    components: {App},
+    components: { App },
 })
 
 ipc.send('app-height', $('.app').height())
