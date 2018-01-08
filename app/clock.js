@@ -57,24 +57,24 @@ function onClockRemove() {
 
 function onClockAdd() {
     ipc.on('clock-add', (e, city) => {
-        getCity(city, function(data) {
-            if (!data) return
+        // getCity(city, function(data) {
+            if (!city) return
 
             let clocks = settings.get('clocks')
             let issetClock = false
 
             clocks.forEach(clock => {
-                if (clock.name.replace(/[^a-z0-9]/gi, '') == data.name.replace(/[^a-z0-9]/gi, '')) {
+                if (clock.name.replace(/[^a-z0-9]/gi, '') == city.name.replace(/[^a-z0-9]/gi, '')) {
                     issetClock = true
                 }
             })
 
             if (!issetClock) {
-                clocks.push(data)
+                clocks.push(city)
                 settings.set('clocks', clocks)
-                e.sender.send('clock-added', data)
+                e.sender.send('clock-added', city)
             }
-        })
+        // })
     })
 }
 
@@ -108,28 +108,28 @@ function update() {
     tray.setTitle(title)
 }
 
-function getCity(name, callback) {
-    let url = 'https://timezoneapi.io/api/address/?' + encodeURIComponent(name).replace(/%20/g, '+')
-
-    request(url, function(err, res, dat) {
-        if (err) console.log('clock get city data:', err.code)
-
-        if (dat) {
-            let data = JSON.parse(dat)
-            let utc = Math.floor(new Date().getTime())
-
-            if (data.data.addresses_found > 0) {
-                let item = data.data.addresses[0]
-                callback({
-                    name: item.city ? item.city : item.country,
-                    full: item.city ? item.city + ', ' + item.country_code : item.country,
-                    offset: item.datetime.offset_hours,
-                    data: item,
-                })
-            }
-        }
-    })
-}
+// function getCity(name, callback) {
+//     let url = 'https://timezoneapi.io/api/address/?' + encodeURIComponent(name).replace(/%20/g, '+')
+//
+//     request(url, function(err, res, dat) {
+//         if (err) console.log('clock get city data:', err.code)
+//
+//         if (dat) {
+//             let data = JSON.parse(dat)
+//             let utc = Math.floor(new Date().getTime())
+//
+//             if (data.data.addresses_found > 0) {
+//                 let item = data.data.addresses[0]
+//                 callback({
+//                     name: item.city ? item.city : item.country,
+//                     full: item.city ? item.city + ', ' + item.country_code : item.country,
+//                     offset: item.datetime.offset_hours,
+//                     data: item,
+//                 })
+//             }
+//         }
+//     })
+// }
 
 function reset() {
     settings.set('clocks', [

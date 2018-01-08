@@ -16,18 +16,6 @@ $(function() {
         ipc.send('app-height', $('.app').height())
     })
 
-    ipc.on('clock-added', (e, clock) => {
-        $('.clock').append(`
-            <button data-name='${clock.name}'>
-                ${clock.full}
-                <time data-offset='${clock.offset}'></time>
-                <span class='delete'><i class='fa fa-fw fa-times-circle fa-fw'></i></span>
-            </button>
-        `)
-        updateTime()
-        ipc.send('app-height', $('.app').height())
-    })
-
     $('.app').on('click', '.clock button', function() {
         $(this).toggleClass('active')
         ipc.send('clock-toggle', $(this).data('name'))
@@ -53,23 +41,41 @@ $(function() {
         ipc.send('startup')
     })
 
+    ipc.on('clock-added', (e, clock) => {
+        $('.clock').append(`
+            <button data-name='${clock.name}'>
+                ${clock.full}
+                <time data-offset='${clock.offset}'></time>
+                <span class='delete'><i class='fa fa-fw fa-times-circle fa-fw'></i></span>
+            </button>
+        `)
+        updateTime()
+        ipc.send('app-height', $('.app').height())
+    })
+
+    var newclock = null
     $('.app').on('keyup', '.search input', function(e) {
         var keycode = e.keyCode ? e.keyCode : e.which
         var q = $('.search input').val().trim()
         var label = $('.search label').text()
 
         if (keycode == 13) {
-            if (label != '') ipc.send('clock-add', label)
-            else if (q != '') ipc.send('clock-add', q)
+            if(newclock) {
+                ipc.send('clock-add', newclock)
+                newclock = null
+            }
 
             $('.search label').text('')
             $('.search input').val('')
         } else {
             if (q == '') {
+                newclock = null
                 $('.search label').text('')
             } else {
-                db.find(`SELECT name, UPPER(country) code FROM cities WHERE city LIKE '${q}%' ORDER BY popularity DESC LIMIT 1`, city => {
+                db.find(`SELECT name, UPPER(country) code, offset FROM cities WHERE city LIKE '%${q}%' ORDER BY popularity DESC LIMIT 1`, city => {
                     $('.search label').text(!city ? 'Not found' : city.name + ', ' + city.code)
+                    if(city) newclock = { name: city.name, full: city.name + ', ' + city.code, offset: city.offset, tray: 0 }
+                    else newclock = null
                 })
             }
         }

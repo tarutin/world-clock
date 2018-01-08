@@ -8,32 +8,35 @@ var connect = false
 
 function init() {
     console.log('db init')
-    
+
     db = mysql.createConnection(config.DB_CONNECT)
 
     db.connect(function(err) {
-        if(err) {
+        if (err) {
             connect = false
             console.log('db not connected:', err.code)
+        } else {
+            connect = true
         }
-        else connect = true
     })
-    
-    db.on('error', function() { connect = false })
-    
+
+    db.on('error', function() {
+        connect = false
+    })
+
     setInterval(reconnect, 2000)
 }
 
 function find(q, callback) {
-    if(!connect) return
-    
+    if (!connect) return
+
     db.query(q, function(error, results, fields) {
-        if(error) {
+        if (error) {
             console.log('db err', error.code)
             connect = false
             reconnect()
         }
-        if(results) callback(results[0], fields)
+        if (results) callback(results[0], fields)
     })
 }
 
@@ -43,11 +46,11 @@ function disconnect() {
 }
 
 function reconnect() {
-    if(!connect) {
+    if (!connect) {
         console.log('db', 'lost connect')
         db = mysql.createConnection(config.DB_CONNECT)
         db.connect(function(err) {
-            if(!err) {
+            if (!err) {
                 connect = true
                 console.log('db', 'reconnect')
             }
