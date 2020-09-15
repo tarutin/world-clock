@@ -51,13 +51,13 @@ function init() {
 
     win.on('blur', hide)
 
-    win.on('show', () => {
-        tray.setHighlightMode('always')
-    })
-
-    win.on('hide', () => {
-        tray.setHighlightMode('never')
-    })
+    // win.on('show', () => {
+    //     tray.setHighlightMode('always')
+    // })
+    //
+    // win.on('hide', () => {
+    //     tray.setHighlightMode('never')
+    // })
 
     win.on('close', (event) => {
         if (app.quitting) {
